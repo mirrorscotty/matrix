@@ -29,6 +29,21 @@ typedef struct {
     int rows;
     int cols;
 } matrix;
+/*
+class Matrix {
+
+    private:
+    double **array;
+    int rows;
+    int cols;
+    double tol;
+
+    public:
+    Matrix(int, int);
+    ~Matrix();
+
+};
+*/
 
 void DestroyMatrix(matrix*);
 matrix* CalcMinor(matrix*, int, int);
@@ -50,6 +65,7 @@ matrix* CalcInv(matrix*);
 
 matrix* ExtractColumn(matrix*, int);
 matrix* AugmentMatrix(matrix*, matrix*);
+matrix* CatColVector(int, ...);
 
 matrix* ParseMatrix(char*);
 matrix* linspace(double, double, int);
