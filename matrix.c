@@ -489,7 +489,7 @@ matrix* CatColVector(int n, ...)
 
     for(i=0; i<n; i++)
         for(j=0; j<len(v[i]); j++)
-            setval(result, valV(v[i], n), n, i);
+            setval(result, valV(v[i], j), j, i);
 
     /* Cleanup */
     free(v);
