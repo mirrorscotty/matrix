@@ -136,6 +136,71 @@ void mtxprntfile(matrix *A, char *filename)
 }
 
 /**
+ * @brief Load a matrix from a CSV file.
+ * @param filename The filename to load data from
+ * @return A matrix containing all the values in the CSV file
+ */
+matrix* mtxloadcsv(char* filename)
+{
+    matrix *A;
+    int maxlines = 200,
+        maxchars = 80,
+        i, j,
+        ncols = 0,
+        nrows = 0;
+    const char *delim = ",";
+    char **buffer;
+    char *number;
+    FILE *fp; /* TODO: Actually open/read the file */
+
+    /* Make a buffer to store all of the characters read from the file */
+    buffer = (char**) calloc(sizeof(char*), maxlines);
+    for(i=0; i<maxlines; i++)
+        buffer[i] = (char*) calloc(sizeof(char), maxchars);
+
+    /* Load in all the lines (up to the specified limits) */
+    fp = fopen(filename, "r");
+    for(i=0; i<maxlines; i++) {
+        if(fgets(buffer[i], maxchars, fp) == NULL) {
+            nrows = i;
+            break;
+        }
+    }
+    fclose(fp);
+
+    /* Check the first line to see how many values there are. */
+    i = 0;
+    while(buffer[0][i]) {
+        if(buffer[0][i] == delim[0])
+            ncols++;
+        i++;
+    }
+
+    /* Make a matrix that's hopefully the right size */
+    A = CreateMatrix(nrows, ncols);
+    /* Start putting values into it */
+    for(i=0; i<nrows; i++) {
+        /* Get the first value and store it */
+        number = strtok(buffer[i], delim);
+        setval(A, atof(number), i, 0);
+
+        /* Get the rest */
+        j = 1;
+        while(number = strtok(NULL, delim)) {
+            setval(A, atof(number), i, j);
+            j++;
+        }
+    }
+
+    for(i=0; i<maxlines; i++)
+        free(buffer[i]);
+    free(buffer);
+    free(number);
+
+    return A;
+}
+
+/**
  * @brief Transpose a matrix
  * @param x The matrix to transpose
  * @return The transpose of matrix x

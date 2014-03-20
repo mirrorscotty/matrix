@@ -72,6 +72,7 @@ matrix* linspace(double, double, int);
 void Map(matrix*, double (*func)(double));
 void mtxprnt(matrix*);
 void mtxprntfile(matrix*, char*);
+matrix* mtxloadcsv(char*);
 
 /**
  * @struct vector
