@@ -108,12 +108,17 @@ matrix* mtxloadcsv(char* filename, int row1)
         /* Get the rest */
         j = 1;
         while(number = xstrtok(NULL, delim)) {
-            if(number[0] == '\0')
+            if(number[0] == '\0' || number[0] == '\n')
                 setval(A, NAN, i, j);
-            else
+            else {
                 setval(A, atof(number), i, j);
+                if(!atof(number))
+                    printf("%s",number);
+            }
             j++;
         }
+        for(; j<nCols(A); j++)
+            setval(A, NAN, i, j);
     }
 
     for(i=0; i<maxlines; i++)

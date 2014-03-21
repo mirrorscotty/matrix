@@ -51,6 +51,7 @@ matrix* CalcAdj(matrix*);
 matrix* CalcInv(matrix*);
 matrix* ExtractColumn(matrix*, int);
 matrix* AugmentMatrix(matrix*, matrix*);
+matrix* DeleteNaNRows(matrix*);
 
 void Map(matrix*, double (*func)(double));
 

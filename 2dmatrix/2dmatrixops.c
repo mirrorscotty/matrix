@@ -349,3 +349,41 @@ matrix* ExtractColumn(matrix* A, int col)
     return B;
 }
 
+matrix* DeleteNaNRows(matrix *A)
+{
+    matrix *B;
+    int *keep,
+        currow = 0,
+        rows = 0, cols = 0,
+        i, j, k;
+    
+    cols = nCols(A);
+    keep = (int*) calloc(sizeof(int), nRows(A));
+
+    for(i=0; i<nRows(A); i++) {
+        keep[i] = 1;
+        for(j=0; j<nCols(A); j++) {
+            if(isnan(val(A, i, j)))
+                keep[i] = 0;
+        }
+    }
+
+    for(i=0; i<nRows(A); i++) {
+        rows += keep[i];
+    }
+
+    B = CreateMatrix(rows, cols);
+
+    for(i=0; i<nRows(A); i++) {
+        if(keep[i]) {
+            for(j=0; j<nCols(A); j++)
+                setval(B, val(A, i, j), currow, j);
+            currow++;
+        }
+    }
+
+    free(keep);
+
+    return B;
+}
+
