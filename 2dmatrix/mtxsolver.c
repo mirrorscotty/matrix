@@ -1,6 +1,6 @@
 #include <math.h>
 
-#include "matrix.h"
+#include "2dmatrix.h"
 #include "mtxsolver.h"
 
 void SwapRows(matrix*, int, int);
