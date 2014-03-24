@@ -5,6 +5,21 @@
 
 #include "2dmatrix.h"
 
+double mtxextrm(matrix *x)
+{
+    double extrm = 0;
+    int i, j;
+
+    for(i=0; i<nRows(x); i++) {
+        for(j=0; j<nCols(x); j++) {
+            if(fabs(extrm) < fabs(val(x, i, j)))
+                extrm = val(x, i, j);
+        }
+    }
+
+    return extrm;
+}
+
 /**
  * @brief Transpose a matrix
  * @param x The matrix to transpose

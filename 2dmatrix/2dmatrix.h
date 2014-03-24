@@ -42,6 +42,7 @@ matrix* CopyMatrix(matrix*);
 
 matrix* CalcMinor(matrix*, int, int);
 double CalcDeterminant(matrix*);
+double mtxextrm(matrix*);
 matrix* mtxtrn(matrix*);
 matrix* mtxmul(matrix*, matrix*);
 matrix* mtxmulconst(matrix*, double k);
