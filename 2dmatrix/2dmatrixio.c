@@ -43,10 +43,10 @@ void mtxprntfile(matrix *A, char *filename)
     file = fopen(filename, "w");
     
     for(i=0; i<nRows(A); i++) {
-        for(j=0; j<nCols(A); j++) {
+        for(j=0; j<nCols(A)-1; j++) {
             fprintf(file, "%e,", val(A, i, j));
         }
-        fprintf(file, "\n");
+        fprintf(file, "%e\n", val(A, i, nCols(A)-1));
     }
     fclose(file);
 }
