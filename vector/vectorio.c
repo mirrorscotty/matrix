@@ -1,3 +1,8 @@
+/**
+ * @file vectorio.c
+ * Input/output functions for vectors.
+ */
+
 #include <stdio.h>
 #include "vector.h"
 

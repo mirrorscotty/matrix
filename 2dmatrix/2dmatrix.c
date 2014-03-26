@@ -1,5 +1,5 @@
 /**
- * @file matrix.c
+ * @file 2dmatrix.c
  * This file contains all sorts of nifty matrix functions. All of the matricies
  * here have indicies that start with 0 instead of 1.
  */
@@ -36,7 +36,7 @@ matrix* linspace(double start, double end, int nelem)
 }
     
 /**
- * @brief Get the number of columns in a 1D matrix of doubles
+ * @brief Get the number of columns in a 1D matrix of doubles.
  * @param A The matrix!
  * @return Number of columns 
  */
@@ -46,7 +46,7 @@ int nCols(matrix *A)
 }
 
 /**
- * @brief Return the number of rows in a two dimensional matrix of doubles
+ * @brief Return the number of rows in a two dimensional matrix of doubles.
  *
  * @param A The matrix of interest
  * @return Number of rows
@@ -57,7 +57,7 @@ int nRows(matrix *A)
 }
 
 /**
- * @brief Get the value of a specific element in a matrix
+ * @brief Get the value of a specific element in a matrix.
  *
  * @param A The matrix containing the values
  * @param row The row to pull the value from
@@ -74,7 +74,7 @@ double val(matrix *A, int row, int col)
 }
 
 /**
- * Set the value of a particular element of a matrix
+ * Set the value of a particular element of a matrix.
  *
  * @param A The matrix to set the value in
  * @param value The value to set
@@ -141,7 +141,7 @@ matrix* CreateMatrix(int row, int col)
 }
 
 /**
- * @brief Make a matrix of ones
+ * @brief Make a matrix of ones.
  * 
  * Basically does the same thing as CreateMatrix, only it initializes each value
  * to one instead of zero.
@@ -195,5 +195,4 @@ void DestroyMatrix(matrix *A)
     free(A->array);
     free(A);
 }
-
 

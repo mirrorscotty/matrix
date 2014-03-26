@@ -25,7 +25,7 @@ vector* CreateVector(int n)
 
 /**
  * @brief Free the memory allocated for the vector.
- * @param The pointer to the vector to deallocate memory for
+ * @param v The pointer to the vector to deallocate memory for
  */
 void DestroyVector(vector *v)
 {

@@ -1,3 +1,8 @@
+/**
+ * @file 2dmatrixops.c
+ * All the matrix operations (addition, multiplication, etc.)
+ */
+
 #include <stdarg.h>
 #include <math.h>
 #include <stdlib.h>
@@ -5,6 +10,11 @@
 
 #include "2dmatrix.h"
 
+/**
+ * Determine the element of a matrix with the largest magnitude and return it.
+ * @param A Matrix to search
+ * @returns Value of the largest (or smallest) element.
+ */
 double mtxextrm(matrix *x)
 {
     double extrm = 0;
@@ -364,17 +374,24 @@ matrix* ExtractColumn(matrix* A, int col)
     return B;
 }
 
+/**
+ * Search through the matrix and delete any rows containing a NaN value.
+ * @param A Matrix to search
+ * @returns A new matrix containing only those rows without any NaN values.
+ */
 matrix* DeleteNaNRows(matrix *A)
 {
     matrix *B;
-    int *keep,
-        currow = 0,
-        rows = 0, cols = 0,
+    int *keep, /* List of rows to not delete */
+        currow = 0, /* Current row */
+        rows = 0, cols = 0, /* Dimensions of the output matrix */
         i, j, k;
     
+    /* Allocate memory to store the indicies of the rows to output */
     cols = nCols(A);
     keep = (int*) calloc(sizeof(int), nRows(A));
 
+    /* Figure out which rows contain only numerical values */
     for(i=0; i<nRows(A); i++) {
         keep[i] = 1;
         for(j=0; j<nCols(A); j++) {
@@ -383,12 +400,15 @@ matrix* DeleteNaNRows(matrix *A)
         }
     }
 
+    /* Count the total number of rows to output */
     for(i=0; i<nRows(A); i++) {
         rows += keep[i];
     }
 
+    /* Make a matrix of the appropriate size */
     B = CreateMatrix(rows, cols);
 
+    /* Copy over the values from the original matrix */
     for(i=0; i<nRows(A); i++) {
         if(keep[i]) {
             for(j=0; j<nCols(A); j++)

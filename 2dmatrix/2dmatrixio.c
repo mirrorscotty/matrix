@@ -1,3 +1,8 @@
+/**
+ * @file 2dmatrixio.c
+ * Contains all of the input/output functions for matricies
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

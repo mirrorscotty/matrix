@@ -1,3 +1,8 @@
+/**
+ * @file mtxsolver.c
+ * Set of functions to solve matrix equations
+ */
+
 #include <math.h>
 
 #include "2dmatrix.h"

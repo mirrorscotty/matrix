@@ -1,8 +1,10 @@
 #include <string.h>
 
-/* Code from: http://www.tek-tips.com/viewthread.cfm?qid=294161 */
-/*
- * strtok version that handles null fields
+/**
+ * Revised version of the strtok function.
+ * This version returns "" if there are two deliminaters right next to each
+ * other.
+ * Code from: http://www.tek-tips.com/viewthread.cfm?qid=294161
  */
 char *xstrtok(line, delims)
 char *line, *delims;

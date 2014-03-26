@@ -1,3 +1,8 @@
+/**
+ * @file vectorops.c
+ * Mathematical operations for vectors.
+ */
+
 #include <math.h>
 
 #include "vector.h"
