@@ -358,7 +358,7 @@ matrix* AugmentMatrix(matrix *A, matrix *B)
 /**
  * @brief Pull out a column of a matrix.
  * @param A The matrix to pull the column from
- * @param col The column to get
+ * @param col The column to get (numbering starts with 0)
  * @returns A column matrix containing the values from the desired column of A
  */
 matrix* ExtractColumn(matrix* A, int col)
