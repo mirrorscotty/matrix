@@ -65,8 +65,8 @@ void mtxprntfile(matrix *A, char *filename)
 matrix* mtxloadcsv(char* filename, int row1)
 {
     matrix *A;
-    int maxlines = 200,
-        maxchars = 80,
+    int maxlines = MAXROWS,
+        maxchars = LINELENGTH,
         i, j,
         ncols = 1, /* Assume there's at least one column */
         nrows = 0;
@@ -117,8 +117,8 @@ matrix* mtxloadcsv(char* filename, int row1)
                 setval(A, NAN, i, j);
             else {
                 setval(A, atof(number), i, j);
-                if(!atof(number))
-                    printf("%s",number);
+                //if(!atof(number))
+                   //printf("%s",number);
             }
             j++;
         }
@@ -134,12 +134,6 @@ matrix* mtxloadcsv(char* filename, int row1)
     return A;
 }
 
-///Maximum number of rows to allow
-#define MAXROWS 100
-///Maximum number of columns
-#define MAXCOLS 100
-///The length of each line of text that is parsed
-#define LINELENGTH 80
 /**
  * @brief Create a matrix from a line of text.
  *

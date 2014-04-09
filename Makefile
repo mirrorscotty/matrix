@@ -1,6 +1,6 @@
 VPATH=2dmatrix vector
 CC=gcc
-#CFLAGS=-I../choi-okos -I../diffusivity
+CFLAGS=-ggdb
 OBJ=2dmatrix.o 2dmatrixio.o 2dmatrixops.o mtxsolver.o xstrtok.o vector.o vectorio.o vectorops.o other.o
 
 all: $(OBJ)

@@ -1,6 +1,13 @@
 #ifndef _2DMATRIX_H
 #define _2DMATRIX_H
 
+///Maximum number of rows to allow
+#define MAXROWS 8000
+///Maximum number of columns
+#define MAXCOLS 100
+///The length of each line of text that is parsed
+#define LINELENGTH 80
+
 /**
  * @brief Add a value to an element in a matrix
  *
