@@ -1,3 +1,8 @@
+/**
+ * @file matrix.h
+ * Include this file to include everything in the matrix library
+ */
+
 #ifndef MATRIX_H
 #define MATRIX_H
 

@@ -73,7 +73,6 @@ matrix* mtxloadcsv(char* filename, int row1)
     const char *delim = ",";
     char **buffer;
     char *number;
-    double tmp;
     FILE *fp; /* TODO: Actually open/read the file */
 
     /* Make a buffer to store all of the characters read from the file */
@@ -112,7 +111,7 @@ matrix* mtxloadcsv(char* filename, int row1)
 
         /* Get the rest */
         j = 1;
-        while(number = xstrtok(NULL, delim)) {
+        while((number = xstrtok(NULL, delim))) {
             if(number[0] == '\0' || number[0] == '\n')
                 setval(A, NAN, i, j);
             else {

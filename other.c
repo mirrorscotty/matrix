@@ -1,3 +1,9 @@
+/**
+ * @file other.c
+ * Functions that don't belong in any of the subdirectories. Currently,
+ * there's just one.
+ */
+
 #include <stdarg.h>
 #include <stdlib.h>
 

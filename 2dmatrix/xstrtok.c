@@ -1,3 +1,9 @@
+/**
+ * @file xstrtok.c
+ * Contains a modified version of the strtok function used when loading
+ * CSV files and converting them to matricies.
+ */
+
 #include <string.h>
 
 /**

@@ -391,7 +391,7 @@ matrix* DeleteNaNRows(matrix *A)
     int *keep, /* List of rows to not delete */
         currow = 0, /* Current row */
         rows = 0, cols = 0, /* Dimensions of the output matrix */
-        i, j, k;
+        i, j;
     
     /* Allocate memory to store the indicies of the rows to output */
     cols = nCols(A);

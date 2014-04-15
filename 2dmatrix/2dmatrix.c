@@ -1,7 +1,7 @@
 /**
  * @file 2dmatrix.c
- * This file contains all sorts of nifty matrix functions. All of the matricies
- * here have indicies that start with 0 instead of 1.
+ * This file contains all sorts of nifty matrix functions. All of the
+ * matricies here have indicies that start with 0 instead of 1.
  */
 
 #include <stdio.h>

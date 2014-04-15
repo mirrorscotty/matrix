@@ -1,3 +1,8 @@
+/**
+ * @file 2dmatrix.h
+ * Define a data structure for a two-dimensional matrix of arbitrary size
+ */
+
 #ifndef _2DMATRIX_H
 #define _2DMATRIX_H
 

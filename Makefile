@@ -1,9 +1,15 @@
 VPATH=2dmatrix vector
 CC=gcc
-CFLAGS=-ggdb
+CFLAGS=-ggdb -Wall -O2
 OBJ=2dmatrix.o 2dmatrixio.o 2dmatrixops.o mtxsolver.o xstrtok.o vector.o vectorio.o vectorops.o other.o
 
-all: $(OBJ)
+all: matrix.a
+
+matrix.a: $(OBJ)
+	ar -cvq $@ $?
+
+doc: Doxyfile
+	doxygen Doxyfile
 
 2dmatrix.o: 2dmatrix.h
 
@@ -24,6 +30,6 @@ vectorops.o: vector.h
 other.o: matrix.h 2dmatrix.h vector.h
 
 clean:
-	rm *.o
+	rm -rf matrix.a $(OBJ) doc
 
 

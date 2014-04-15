@@ -1,3 +1,8 @@
+/**
+ * @file vector.h
+ * Define a struct to contain vectors of arbitrary length.
+ */
+
 #ifndef VECTOR_H
 #define VECTOR_H
 
