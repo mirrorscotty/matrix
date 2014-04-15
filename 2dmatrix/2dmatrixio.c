@@ -58,11 +58,11 @@ void mtxprntfile(matrix *A, char *filename)
 
 /**
  * @brief Load a matrix from a CSV file.
- * @param filename The filename to load data from
- * @param number of the first row to load.
- * @return A matrix containing all the values in the CSV file
+ * @param filename The filename to load data from.
+ * @param row0 Number of the first row to load.
+ * @return A matrix containing all the values in the CSV file.
  */
-matrix* mtxloadcsv(char* filename, int row1)
+matrix* mtxloadcsv(char* filename, int row0)
 {
     matrix *A;
     int maxlines = MAXROWS,
@@ -91,19 +91,21 @@ matrix* mtxloadcsv(char* filename, int row1)
     fclose(fp);
 
     /* Check the first line to see how many values there are. */
-    i = row1;
-    while(buffer[0][i]) {
-        if(buffer[0][i] == delim[0])
+    i=0;
+    while(buffer[row0][i]) {
+        if(buffer[row0][i] == delim[0])
             ncols++;
         i++;
     }
 
+    nrows = nrows - row0;
+
     /* Make a matrix that's hopefully the right size */
     A = CreateMatrix(nrows, ncols);
     /* Start putting values into it */
-    for(i=row1; i<nrows; i++) {
+    for(i=0; i<nrows; i++) {
         /* Get the first value and store it */
-        number = xstrtok(buffer[i], delim);
+        number = xstrtok(buffer[i+row0], delim);
             if(number[0] == '\0')
                 setval(A, NAN, i, 0);
             else
