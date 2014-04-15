@@ -296,10 +296,16 @@ matrix* CalcInv(matrix* A)
     int i, j;
     double det;
 
-    inv = NULL;
+    inv = CreateMatrix(nRows(A), nRows(A));
+
+    /* If someone sticks a 1x1 matrix in here, do this. */
+    if(nRows(A) == 1 && nCols(A) == 1) {
+        setval(inv, 1/val(A, 0, 0), 0, 0);
+        return inv;
+    }
+
     det = CalcDeterminant(A);
     adj = CalcAdj(A);
-    inv = CreateMatrix(nRows(A), nRows(A));
     
     for(i=0; i<nRows(A); i++) {
         for(j=0; j<nRows(A); j++) {
