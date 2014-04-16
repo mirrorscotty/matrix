@@ -11,7 +11,7 @@
 ///Maximum number of columns
 #define MAXCOLS 100
 ///The length of each line of text that is parsed
-#define LINELENGTH 80
+#define LINELENGTH 100
 
 /**
  * @brief Add a value to an element in a matrix
