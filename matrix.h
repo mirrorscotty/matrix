@@ -11,6 +11,7 @@
 #include "vector/vector.h"
 
 matrix* CatColVector(int, ...);
+vector* ExtractColumnAsVector(matrix*, int);
 
 #endif
 

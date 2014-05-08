@@ -46,3 +46,21 @@ matrix* CatColVector(int n, ...)
     return result;
 }
 
+/**
+ * Pull out a column of a matrix and store it as a vector.
+ * @param A Source matrix
+ * @param col Number of the column to grab. The first column is column 0.
+ * @returns A vector with length equal to the number of rows in A
+ */
+vector* ExtractColumnAsVector(matrix *A, int col)
+{
+    vector *v;
+    int i;
+
+    v = CreateVector(nRows(A));
+
+    for(i=0; i<len(v); i++)
+        setvalV(v, i, val(A, i, col));
+
+    return v;
+}
