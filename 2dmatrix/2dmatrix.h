@@ -71,6 +71,7 @@ void Map(matrix*, double (*func)(double));
 matrix* ParseMatrix(char*);
 void mtxprnt(matrix*);
 void mtxprntfile(matrix*, char*);
+void mtxprntfilehdr(matrix*, char*, char*);
 matrix* mtxloadcsv(char*, int);
 
 #endif

@@ -42,11 +42,24 @@ void mtxprnt(matrix *A)
  */
 void mtxprntfile(matrix *A, char *filename)
 {
+    mtxprntfilehdr(A, filename, NULL);
+}
+
+/**
+ * @brief Print a matrix out to some random file
+ * @param A The matrix to print
+ * @param filename The filename to print to
+ * @param header Optional header
+ */
+void mtxprntfilehdr(matrix *A, char *filename, char *header)
+{
     int i, j;
     FILE *file;
 
     file = fopen(filename, "w");
     
+    if(header)
+        fprintf(file, "%s", header);
     for(i=0; i<nRows(A); i++) {
         for(j=0; j<nCols(A)-1; j++) {
             fprintf(file, "%e,", val(A, i, j));
