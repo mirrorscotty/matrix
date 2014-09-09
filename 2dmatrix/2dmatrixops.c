@@ -7,8 +7,21 @@
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <pthread.h>
+#include <errno.h>
 
 #include "2dmatrix.h"
+
+typedef struct{
+    matrix *A;
+    matrix *B;
+    matrix *C;
+    int r1;
+    int r2;
+    int c1;
+    int c2;
+    double k;
+} mtxop;
 
 /**
  * Determine the element of a matrix with the largest magnitude and return it.
@@ -61,6 +74,27 @@ matrix* mtxtrn(matrix *x)
     return xt;
 }
 
+void _mtxmul(void *ptr)
+{
+    mtxop *param;
+    matrix *A, *B, *C;
+    int i, j, k;
+
+    param = (mtxop*) ptr;
+    A = param->A;
+    B = param->B;
+    C = param->C;
+
+    /* Cik = AijBjk */
+    for(i=param->r1; i<param->r2; i++)
+        for(k=param->c1; k<param->c2; k++)
+            for(j=0; j<nCols(param->A); j++)
+                C->array[i][k] += A->array[i][j] * B->array[j][k];
+
+    pthread_exit(0);
+    return;
+}
+
 /**
  * @brief Multiply matricies using nifty index notation!
  *
@@ -73,9 +107,12 @@ matrix* mtxtrn(matrix *x)
 matrix* mtxmul(matrix *A, matrix *B)
 {
     int Ar, Ac, Br, Bc;
-    int i, j, k;
+    int i;
     matrix *C;
 
+    mtxop **param;
+    pthread_t *thread;
+    
     C = NULL;
     
     Ar = nRows(A);
@@ -92,14 +129,39 @@ matrix* mtxmul(matrix *A, matrix *B)
     /* Allocate Memory */
     C = CreateMatrix(Ar, Bc);
     
-    /* Cik = AijBjk */
-    for(i=0; i<Ar; i++) {
-        for(k=0; k<Bc; k++) {
-            for(j=0; j<Ac; j++) {
-                C->array[i][k] += A->array[i][j] * B->array[j][k];
-            }
-        }
+    param = (mtxop**) calloc(sizeof(mtxop*), 4);
+    for(i=0; i<4; i++) {
+        param[i] = (mtxop*) calloc(sizeof(mtxop), 1);
+        param[i]->A = A;
+        param[i]->B = B;
+        param[i]->C = C;
     }
+    param[0]->r1 = 0;
+    param[0]->c1 = 0;
+    param[0]->r2 = Ar/2;
+    param[0]->c2 = Bc/2;
+
+    param[1]->r1 = Ar/2;
+    param[1]->c1 = 0;
+    param[1]->r2 = Ar;
+    param[1]->c2 = Bc/2;
+
+    param[2]->r1 = 0;
+    param[2]->c1 = Bc/2;
+    param[2]->r2 = Ar/2;
+    param[2]->c2 = Bc;
+
+    param[3]->r1 = Ar/2;
+    param[3]->c1 = Bc/2;
+    param[3]->r2 = Ar;
+    param[3]->c2 = Bc;
+
+    thread = (pthread_t*) calloc(sizeof(pthread_t), 4);
+    for(i=0; i<4; i++)
+        pthread_create(&thread[i], NULL, (void *) &_mtxmul, (void *) param[i]);
+
+    for(i=0; i<4; i++)
+        pthread_join(thread[i], NULL);
 
     return C;
 }
