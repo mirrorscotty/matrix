@@ -64,3 +64,26 @@ vector* ExtractColumnAsVector(matrix *A, int col)
 
     return v;
 }
+
+matrix* meshgridX(vector* x, vector *y)
+{
+    int i, j;
+    matrix *X;
+    X = CreateMatrix(len(y), len(x));
+    for(i=0; i<len(y); i++)
+        for(j=0; j<len(x); j++)
+            setval(X, valV(x, j), i, j);
+    return X;
+}
+
+matrix* meshgridY(vector* x, vector *y)
+{
+    int i, j;
+    matrix *Y;
+    Y = CreateMatrix(len(y), len(x));
+    for(i=0; i<len(y); i++)
+        for(j=0; j<len(x); j++)
+            setval(Y, valV(y, i), i, j);
+    return Y;
+}
+

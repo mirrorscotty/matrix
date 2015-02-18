@@ -6,7 +6,7 @@ OBJ=2dmatrix.o 2dmatrixio.o 2dmatrixops.o mtxsolver.o xstrtok.o vector.o vectori
 all: matrix.a
 
 matrix.a: $(OBJ)
-	ar -cvr $@ $?
+	ar -cvr $@ $^
 
 doc: Doxyfile
 	doxygen Doxyfile
