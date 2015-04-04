@@ -381,6 +381,25 @@ matrix* ExtractColumn(matrix* A, int col)
 }
 
 /**
+ * @brief Pull out a row of a matrix.
+ * @param A The matrix to pull the row from
+ * @param row The row to get (numbering starts with 0)
+ * @returns A row matrix containing the values from the desired column of A
+ */
+matrix* ExtractRow(matrix* A, int row)
+{
+    matrix *B;
+    int i;
+    B = CreateMatrix(1, nCols(A));
+
+    for(i=0; i<nCols(A); i++) {
+	setval(B, val(A, row, i), 0, i);
+    }
+
+    return B;
+}
+
+/**
  * Search through the matrix and delete any rows containing a NaN value.
  * @param A Matrix to search
  * @returns A new matrix containing only those rows without any NaN values.

@@ -65,6 +65,25 @@ vector* ExtractColumnAsVector(matrix *A, int col)
     return v;
 }
 
+/**
+ * Store the values of a row in a matrix in a vector.
+ * @param A Source matrix
+ * @param row Number of the row to get values from. The first row is Row 0.
+ * @returns A vector with length equal to the number of columns in A
+ */
+vector* ExtractRowAsVector(matrix *A, int row)
+{
+    vector *v;
+    int i;
+
+    v = CreateVector(nCols(A));
+
+    for(i=0; i<len(v); i++)
+        setvalV(v, i, val(A, row, i));
+
+    return v;
+}
+
 matrix* meshgridX(vector* x, vector *y)
 {
     int i, j;

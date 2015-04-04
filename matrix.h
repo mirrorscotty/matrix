@@ -12,6 +12,7 @@
 
 matrix* CatColVector(int, ...);
 vector* ExtractColumnAsVector(matrix*, int);
+vector* ExtractRowAsVector(matrix*, int);
 
 matrix* meshgridX(vector*, vector*);
 matrix* meshgridY(vector*, vector*);

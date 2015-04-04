@@ -63,6 +63,7 @@ matrix* mtxneg(matrix*);
 matrix* CalcAdj(matrix*);
 matrix* CalcInv(matrix*);
 matrix* ExtractColumn(matrix*, int);
+matrix* ExtractRow(matrix*, int);
 matrix* AugmentMatrix(matrix*, matrix*);
 matrix* DeleteNaNRows(matrix*);
 
