@@ -59,6 +59,7 @@ matrix* mtxtrn(matrix*);
 matrix* mtxmul(matrix*, matrix*);
 matrix* mtxmulconst(matrix*, double k);
 matrix* mtxadd(matrix*, matrix*);
+matrix* mtxsub(matrix*, matrix*);
 matrix* mtxneg(matrix*);
 matrix* CalcAdj(matrix*);
 matrix* CalcInv(matrix*);

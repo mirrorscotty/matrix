@@ -77,7 +77,7 @@ matrix* mtxmul(matrix *A, matrix *B)
     matrix *C;
 
     C = NULL;
-    
+
     Ar = nRows(A);
     Ac = nCols(A);
     Br = nRows(B);
@@ -88,10 +88,10 @@ matrix* mtxmul(matrix *A, matrix *B)
         fprintf(stderr, "Error: Incompatible matrix dimensions.\n");
         return C;
     }
-    
+
     /* Allocate Memory */
     C = CreateMatrix(Ar, Bc);
-    
+
     /* Cik = AijBjk */
     for(i=0; i<Ar; i++) {
         for(k=0; k<Bc; k++) {
@@ -142,19 +142,46 @@ matrix* mtxadd(matrix *A, matrix *B)
 {
     int rows = nRows(A);
     int cols = nCols(A);
-    
+
     matrix *C;
-    
+
     int i, j;
-    
+
     C = CreateMatrix(rows, cols);
-    
+
     for(i=0; i<rows; i++) {
         for(j=0; j<cols; j++) {
             setval(C, val(A, i, j) + val(B, i, j), i, j);
         }
     }
-    
+
+    return C;
+}
+
+/**
+ * @brief Subtract two matricies.
+ * Todo: Add error checking to make sure the dimensions agree.
+ * @param A Some random matrix
+ * @param B Another random matrix with the same dimensions as A
+ * @return A-B
+ */
+matrix* mtxsub(matrix *A, matrix *B)
+{
+    int rows = nRows(A);
+    int cols = nCols(A);
+
+    matrix *C;
+
+    int i, j;
+
+    C = CreateMatrix(rows, cols);
+
+    for(i=0; i<rows; i++) {
+        for(j=0; j<cols; j++) {
+            setval(C, val(A, i, j) - val(B, i, j), i, j);
+        }
+    }
+
     return C;
 }
 
@@ -257,7 +284,7 @@ double CalcDeterminant(matrix *p)
 
 /**
  * @brief Calculate the adjugate matrix of A
- * 
+ *
  * @param A The matrix of interest
  * @return The adjugate matrix
  */
@@ -266,7 +293,7 @@ matrix* CalcAdj(matrix* A)
     int i, j;
     double cofactor;
     matrix *minor, *adj, *adjt;
-    
+
     adj = CreateMatrix(nRows(A), nRows(A));
     for(i=0; i<nRows(A); i++) {
         for(j=0; j<nRows(A); j++) {
@@ -279,7 +306,7 @@ matrix* CalcAdj(matrix* A)
 
     adjt = mtxtrn(adj);
     DestroyMatrix(adj);
-    
+
 
     return adjt;
 }
@@ -306,7 +333,7 @@ matrix* CalcInv(matrix* A)
 
     det = CalcDeterminant(A);
     adj = CalcAdj(A);
-    
+
     for(i=0; i<nRows(A); i++) {
         for(j=0; j<nRows(A); j++) {
             setval(inv, val(adj, i, j)/det, i, j);
@@ -411,7 +438,7 @@ matrix* DeleteNaNRows(matrix *A)
         currow = 0, /* Current row */
         rows = 0, cols = 0, /* Dimensions of the output matrix */
         i, j;
-    
+
     /* Allocate memory to store the indicies of the rows to output */
     cols = nCols(A);
     keep = (int*) calloc(sizeof(int), nRows(A));
