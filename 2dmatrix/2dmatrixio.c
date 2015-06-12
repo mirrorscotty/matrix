@@ -19,7 +19,7 @@ void mtxprnt(matrix *A)
 {
     int i, j;
     double v;
-    
+
     for(i=0; i<nRows(A); i++) {
         printf("[ ");
         for(j=0; j<nCols(A); j++) {
@@ -57,7 +57,7 @@ void mtxprntfilehdr(matrix *A, char *filename, char *header)
     FILE *file;
 
     file = fopen(filename, "w");
-    
+
     if(header)
         fprintf(file, "%s", header);
     for(i=0; i<nRows(A); i++) {
@@ -229,7 +229,7 @@ matrix* ParseMatrix(char* raw)
     }
     free(rows);
     free(values);
-    
+
     return out;
 }
 
