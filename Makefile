@@ -5,8 +5,6 @@ OBJ=2dmatrix/2dmatrix.o 2dmatrix/2dmatrixio.o 2dmatrix/2dmatrixops.o 2dmatrix/mt
 
 all: matrix.a
 
--include $(OBJ:.o=.d)
-
 matrix.a: $(OBJ)
 	ar -cvr $@ $?
 
@@ -27,3 +25,4 @@ clean:
 	  sed -e 's/^ *//' -e 's/$$/:/' >> $*.d
 	@rm -f $*.d.tmp
 
+-include $(OBJ:.o=.d)
