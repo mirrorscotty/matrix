@@ -16,7 +16,7 @@
  * @brief Create a matrix of equally spaced points
  *
  * This is the equivalent of the Matlab linspace command.
- * 
+ *
  * @param start First value
  * @param end Last value
  * @param Number of points to put in the matrix
@@ -26,7 +26,7 @@ matrix* linspace(double start, double end, int nelem)
 {
     matrix* x;
     int i;
-    
+
     x = CreateMatrix(1, nelem);
     for(i=0; i<nelem; i++) {
         setval(x, start + i*(end-start)/(nelem-1), 0, i);
@@ -34,11 +34,11 @@ matrix* linspace(double start, double end, int nelem)
 
     return x;
 }
-    
+
 /**
  * @brief Get the number of columns in a 1D matrix of doubles.
  * @param A The matrix!
- * @return Number of columns 
+ * @return Number of columns
  */
 int nCols(matrix *A)
 {
@@ -95,7 +95,7 @@ void setval(matrix *A, double value, int row, int col)
  *
  * Create a matrix of the specified dimensions and initialize all the values
  * and initialize all the values to zero.
- * 
+ *
  * @param row The number of rows
  * @param col Number of columns
  * @returns The new matrix
@@ -136,13 +136,13 @@ matrix* CreateMatrix(int row, int col)
 
     A->rows = row;
     A->cols = col;
-    
+
     return A;
 }
 
 /**
  * @brief Make a matrix of ones.
- * 
+ *
  * Basically does the same thing as CreateMatrix, only it initializes each value
  * to one instead of zero.
  *

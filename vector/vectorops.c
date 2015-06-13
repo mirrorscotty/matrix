@@ -29,7 +29,7 @@ vector* addV(vector *a, vector *b)
 }
 
 /**
- * Subtract vector b from vector a 
+ * Subtract vector b from vector a
  *
  * @param a The first vector
  * @param b The vector subtracted from a
@@ -86,7 +86,7 @@ vector* scalarmultV(double k, vector *v)
 
 /**
  * @brief Determine if vectors are equal
- * 
+ *
  * Compare two vectors element by element to determine equality
  *
  * @param a The first vector
