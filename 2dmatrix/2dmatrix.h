@@ -7,7 +7,7 @@
 #define _2DMATRIX_H
 
 ///Maximum number of rows to allow
-#define MAXROWS 8000
+#define MAXROWS 800000
 ///Maximum number of columns
 #define MAXCOLS 100
 ///The length of each line of text that is parsed

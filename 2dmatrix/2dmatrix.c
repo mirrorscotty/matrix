@@ -116,6 +116,7 @@ matrix* CreateMatrix(int row, int col)
     A = (matrix*) malloc(sizeof(matrix));
     if(!A) {
         fprintf(stderr, "Memory allocation error: %s\n", strerror(errno));
+        fprintf(stderr, "Attempted to create a %dx%d matrix and failed.\n", row, col);
     }
 
     A->array = NULL;
@@ -125,6 +126,7 @@ matrix* CreateMatrix(int row, int col)
     A->array = (double**) calloc(row, sizeof(double*));
     if(!A->array) {
         fprintf(stderr, "Memory allocation error: %s\n", strerror(errno));
+        fprintf(stderr, "Attempted to create a %dx%d matrix and failed.\n", row, col);
         return A;
     }
 

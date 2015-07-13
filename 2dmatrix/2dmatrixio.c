@@ -101,6 +101,8 @@ matrix* mtxloadcsv(char* filename, int row0)
             break;
         }
     }
+    if(i==0)
+        fprintf(stderr, "Maximum number of lines exceeded. Current limit is %d lines.\n", maxlines);
     fclose(fp);
 
     /* Check the first line to see how many values there are. */
