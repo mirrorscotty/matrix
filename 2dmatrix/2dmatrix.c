@@ -67,7 +67,9 @@ int nRows(matrix *A)
 double val(matrix *A, int row, int col)
 {
     if((row >= nRows(A)) ||  (col >= nCols(A)) || (row < 0) || (col < 0)) {
-        //fprintf(stderr, "Error: index out of bounds. (%d, %d)\n", row, col);
+        fprintf(stderr, "Error: index out of bounds. (%d, %d)\n", row, col);
+        fprintf(stderr, "Matrix is %dx%d\n", nRows(A), nCols(A));
+
         return NAN;
     }
     return A->array[row][col];
