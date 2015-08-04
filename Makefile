@@ -1,9 +1,12 @@
 VPATH=2dmatrix vector
 CC=gcc
-CFLAGS=-ggdb -Wall -O2
+CFLAGS=-ggdb -Wall -O2 -pg
 OBJ=2dmatrix/2dmatrix.o 2dmatrix/2dmatrixio.o 2dmatrix/2dmatrixops.o 2dmatrix/mtxsolver.o 2dmatrix/xstrtok.o vector/vector.o vector/vectorio.o vector/vectorops.o other.o
 
 all: matrix.a
+
+test: test.o matrix.a 
+	$(CC) -o $@ $^ $(CFLAGS) -lm -lblas -llapack
 
 matrix.a: $(OBJ)
 	ar -cvr $@ $?
@@ -26,3 +29,4 @@ clean:
 	@rm -f $*.d.tmp
 
 -include $(OBJ:.o=.d)
+
