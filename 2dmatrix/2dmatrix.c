@@ -64,6 +64,7 @@ int nRows(matrix *A)
  * @param col The column to pull the value from
  * @return The value stored at row, col in matrix A
  */
+/* //Replaced by a macro for extra speed.
 double val(matrix *A, int row, int col)
 {
     if((row >= nRows(A)) ||  (col >= nCols(A)) || (row < 0) || (col < 0)) {
@@ -74,6 +75,7 @@ double val(matrix *A, int row, int col)
     }
     return A->array[row][col];
 }
+*/
 
 /**
  * Set the value of a particular element of a matrix.

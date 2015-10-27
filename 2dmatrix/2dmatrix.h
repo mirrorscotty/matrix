@@ -76,4 +76,7 @@ void mtxprntfile(matrix*, char*);
 void mtxprntfilehdr(matrix*, char*, char*);
 matrix* mtxloadcsv(char*, int);
 
+#define val(MATRIX, ROW, COL) (MATRIX)->array[(ROW)][(COL)]
+
 #endif
+
