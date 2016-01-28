@@ -1,5 +1,8 @@
 matrix
 ======
+* Author: Alex Griessman (alex.griessman@gmail.com)
+* Repository: https://github.com/mirrorscotty/matrix
+
 This is a library for manipulating matricies. Currently, both 2D matricies and
 1D vectors are supported. To generate a static library, run "make." Including
 the matrix.h file in a C source file will import all definitions in the library.
